@@ -11,9 +11,9 @@
 </head>
 
 <frameset rows="125,*" cols="*" framespacing="0" frameborder="no" border="0">
-    <frame src="adminmenu.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+    <frame src="adminmenu.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
 
-    <frame src="viewadmin.html" name="contentFrame">
+    <frame src="viewadmin.php" name="contentFrame">
 </frameset>
 <body>
 </body>

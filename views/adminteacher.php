@@ -14,7 +14,7 @@
 
 <body>
 <p>
-  <a href="adminadduser.html?t=1">添加老师</a>
+  <a href="adminadduser.php?t=1">添加老师</a>
 </p>
 <table class="bordered">
     <thead>

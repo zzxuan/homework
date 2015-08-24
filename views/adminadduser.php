@@ -16,7 +16,9 @@
             echo $utype;
             $output = null;
             if(hwuser::adduser($_POST['uname'],$_POST['pass1'],$_POST['disname'],$_SESSION['addusertype'],$output)){
-                jumpto('adminteacher.html'); 
+                if(1 == $_SESSION['addusertype']){
+                    jumpto('adminteacher.php'); 
+                }
                 exit();
             } 
             else{
@@ -46,10 +48,10 @@
     <input type="text" name="disname" placeholder="请输入姓  名"/>
 </p>
   <p>密码:
-    <input type="text" name="pass1" placeholder="请输入密码"/>
+    <input type="password" name="pass1" placeholder="请输入密码"/>
   </p>
   <p>再次输入:
-    <input type="text" name="pass2" placeholder="请输入密码"/>
+    <input type="password" name="pass2" placeholder="请输入密码"/>
   </p>
   <p>
     <input type="submit" name="Submit" value="确定" />

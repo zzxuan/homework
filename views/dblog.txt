@@ -382,3 +382,41 @@
             usertype = 1
 2015-08-24 15:02:39 释放结果集
 2015-08-24 15:02:39 完成整个查询任务,所用时间为0.004810094833374
+2015-08-24 15:21:23 查询 select * from hw_user where
+            usertype = 1
+2015-08-24 15:21:23 释放结果集
+2015-08-24 15:21:23 完成整个查询任务,所用时间为0.0038180351257324
+2015-08-24 15:21:49 查询 select * from hw_user where
+            username = 'wangwu' limit 1
+2015-08-24 15:21:49 插入 insert into hw_user(username,userpassword,usertype,userdisplay) values('wangwu','f1290186a5d0b1ceab27f4e77c0c5d68','1','王五')
+2015-08-24 15:21:49 查询 insert into hw_user(username,userpassword,usertype,userdisplay) values('wangwu','f1290186a5d0b1ceab27f4e77c0c5d68','1','王五')
+2015-08-24 15:21:49 释放结果集
+2015-08-24 15:21:49 完成整个查询任务,所用时间为0.0093300342559814
+2015-08-24 15:23:32 查询 select * from hw_user where
+            usertype = 1
+2015-08-24 15:23:32 释放结果集
+2015-08-24 15:23:32 完成整个查询任务,所用时间为0.0020458698272705
+2015-08-24 15:23:45 查询 select * from hw_user where
+            username = 'sa' limit 1
+2015-08-24 15:23:45 插入 insert into hw_user(username,userpassword,usertype,userdisplay) values('sa','c12e01f2a13ff5587e1e9e4aedb8242d','1','sa')
+2015-08-24 15:23:45 查询 insert into hw_user(username,userpassword,usertype,userdisplay) values('sa','c12e01f2a13ff5587e1e9e4aedb8242d','1','sa')
+2015-08-24 15:23:45 释放结果集
+2015-08-24 15:23:45 完成整个查询任务,所用时间为0.048604965209961
+2015-08-24 15:23:45 查询 select * from hw_user where
+            usertype = 1
+2015-08-24 15:23:45 释放结果集
+2015-08-24 15:23:45 完成整个查询任务,所用时间为0.0035579204559326
+2015-08-24 15:23:48 查询 select * from hw_user where
+            usertype = 1
+2015-08-24 15:23:48 释放结果集
+2015-08-24 15:23:48 完成整个查询任务,所用时间为0.0016000270843506
+2015-08-24 15:25:07 查询 select * from hw_user where
+            username = '123' limit 1
+2015-08-24 15:25:07 插入 insert into hw_user(username,userpassword,usertype,userdisplay) values('123','c20ad4d76fe97759aa27a0c99bff6710','1','123')
+2015-08-24 15:25:07 查询 insert into hw_user(username,userpassword,usertype,userdisplay) values('123','c20ad4d76fe97759aa27a0c99bff6710','1','123')
+2015-08-24 15:25:07 释放结果集
+2015-08-24 15:25:07 完成整个查询任务,所用时间为0.045423030853271
+2015-08-24 15:25:07 查询 select * from hw_user where
+            usertype = 1
+2015-08-24 15:25:07 释放结果集
+2015-08-24 15:25:07 完成整个查询任务,所用时间为0.0018820762634277
