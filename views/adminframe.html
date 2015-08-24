@@ -1,5 +1,7 @@
 <?php
-    require("../checklogin.php");
+    session_start();
+    require_once("../common.php");
+    checklogin();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,14 +10,11 @@
 <title>无标题文档</title>
 </head>
 
-<frameset rows="238,*" cols="*" framespacing="0" frameborder="no" border="0">
-  <frameset rows="*,*">
+<frameset rows="125,*" cols="*" framespacing="0" frameborder="no" border="0">
     <frame src="adminmenu.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+
     <frame src="viewadmin.html" name="contentFrame">
-  </frameset>
-  
-  <frame src="viewadmin.html" name="mainFrame" id="mainFrame" title="mainFrame" />
 </frameset>
-<noframes><body>
+<body>
 </body>
-</noframes></html>
+</html>

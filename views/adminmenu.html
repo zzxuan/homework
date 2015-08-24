@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    require_once("../common.php");
+    checklogin();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -5,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
    <!--start container-->
@@ -21,7 +26,7 @@
 	<nav>
     <ul>
 
-		  <li class="current"><a href="index.html" target="contentFrame">老师管理</a></li>
+		  <li class="current"><a href="adminteacher.html" target="contentFrame">老师管理</a></li>
 		 <li><a href="">学生管理</a></li>
 		 <li><a href="">分班管理</a></li>
     </ul>

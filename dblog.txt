@@ -548,3 +548,35 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
             username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
 2015-08-23 16:31:19 释放结果集
 2015-08-23 16:31:19 完成整个查询任务,所用时间为0.0020508766174316
+2015-08-23 16:51:02 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-23 16:51:02 释放结果集
+2015-08-23 16:51:02 完成整个查询任务,所用时间为0.0077378749847412
+2015-08-23 16:54:33 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-23 16:54:33 释放结果集
+2015-08-23 16:54:33 完成整个查询任务,所用时间为0.051269054412842
+2015-08-23 16:54:52 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-23 16:54:52 释放结果集
+2015-08-23 16:54:52 完成整个查询任务,所用时间为0.0026049613952637
+2015-08-23 16:57:41 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-23 16:57:41 释放结果集
+2015-08-23 16:57:41 完成整个查询任务,所用时间为0.0019400119781494
+2015-08-24 13:25:03 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-24 13:25:03 释放结果集
+2015-08-24 13:25:03 完成整个查询任务,所用时间为0.062541961669922
+2015-08-24 13:28:42 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-24 13:28:42 释放结果集
+2015-08-24 13:28:42 完成整个查询任务,所用时间为0.012961864471436
+2015-08-24 13:28:51 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-24 13:28:51 释放结果集
+2015-08-24 13:28:51 完成整个查询任务,所用时间为0.0021109580993652
+2015-08-24 13:34:36 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-24 13:34:36 释放结果集
+2015-08-24 13:34:36 完成整个查询任务,所用时间为0.0019829273223877

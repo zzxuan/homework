@@ -11,11 +11,30 @@ require_once('db.php');
         
 
         
-        public static function adduser($uname,$upass,$utype){
+        public static function adduser($uname,$upass,$disname,$utype,& $output){
+            if(null == $uname
+            ||null == $upass
+            || null == $utype
+            || null == $disname)
+            {
+                $output = "您输入的格式不对！";
+                return false;
+            }
+            
            $db = new DB();
+           $query = $db->query("select * from ".hwuser::$tabName." where
+            username = '".$uname."' limit 1");
+            
+            if(null != $query && mysql_num_rows($query)>0){
+                $output = "用户名已存在！";
+                return false;
+            }
+           
            $db->insert(hwuser::$tabName,array("username"=>$uname
            ,"userpassword"=>md5($upass)
-           ,"usertype"=>$utype)) ;
+           ,"usertype"=>$utype
+           ,"userdisplay"=>$disname)) ;
+           return true;
         }
         
         public static function userlogin($uname,$upass){
@@ -41,6 +60,36 @@ require_once('db.php');
                         $db = new DB();
             $query = $db->query("select * from ".hwuser::$tabName." where
             usertype = 1");
+            if(null == $query)
+                return null;
+            $i = 0;
+            $rt = array();
+            while($row = mysql_fetch_array($query,MYSQL_ASSOC)) {
+                $rt[$i] = $row;
+                $i++;
+            }
+            return $rt;
+        }
+        
+        public static function getallstudent(){
+                        $db = new DB();
+            $query = $db->query("select * from ".hwuser::$tabName." where
+            usertype = 2");
+            if(null == $query)
+                return null;
+            $i = 0;
+            $rt = array();
+            while($row = mysql_fetch_array($query,MYSQL_ASSOC)) {
+                $rt[$i] = $row;
+                $i++;
+            }
+            return $rt;
+        }
+        
+        public static function getalladmin(){
+                        $db = new DB();
+            $query = $db->query("select * from ".hwuser::$tabName." where
+            usertype = 3");
             if(null == $query)
                 return null;
             $i = 0;

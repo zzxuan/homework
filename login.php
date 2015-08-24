@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once("common.php");
 ?>
 <?php
     require_once("./phplibs/userhelper.php");
@@ -10,8 +11,9 @@
             }
             else{
                 $_SESSION['userinfo'] = $user;
-                echo "登录成功";
-                header('Location:jumpto.php');
+                //echo "登录成功";
+                //header('Location:jumpto.php');
+                gotoMainview();
                 exit;
             }
         }
