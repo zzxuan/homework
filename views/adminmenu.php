@@ -27,8 +27,8 @@
     <ul>
 
 		  <li class="current"><a href="adminteacher.php" target="contentFrame">老师管理</a></li>
-		 <li><a href="">学生管理</a></li>
-		 <li><a href="">分班管理</a></li>
+		 <li><a href="adminstudent.php" target="contentFrame">学生管理</a></li>
+		 <li><a href="adminteacher.php" target="contentFrame">分班管理</a></li>
     </ul>
     </nav>
 	<!--end menu-->

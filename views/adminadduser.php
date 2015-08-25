@@ -19,6 +19,9 @@
                 if(1 == $_SESSION['addusertype']){
                     jumpto('adminteacher.php'); 
                 }
+                else if(2 == $_SESSION['addusertype']){
+                    jumpto('adminstudent.php'); 
+                }
                 exit();
             } 
             else{

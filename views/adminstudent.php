@@ -9,12 +9,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/table.css" rel="stylesheet" type="text/css" media="screen" />
-<title>老师管理</title>
+<title>学生管理</title>
 </head>
 
 <body>
 <p>
-  <a href="adminadduser.php?t=1">添加老师</a>
+  <a href="adminadduser.php?t=2">添加学生</a>
 </p>
 <table class="bordered">
     <thead>
@@ -25,9 +25,9 @@
     </tr>
     </thead>
 <?php
-    $teachers = hwuser::getallteacher();
-    foreach ($teachers as $tea){ 
-      echo("<tr><td>" . $tea->username."</td><td>" . $tea->userdisplay."</td></tr>");
+    $students = hwuser::getallstudent();
+    foreach ($students as $stu){ 
+      echo("<tr><td>" . $stu->username."</td><td>" . $stu->userdisplay."</td></tr>");
     } 
 ?>
 </table>
