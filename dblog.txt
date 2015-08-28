@@ -604,3 +604,7 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
             username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
 2015-08-28 14:22:28 释放结果集
 2015-08-28 14:22:28 完成整个查询任务,所用时间为0.0024728775024414
+2015-08-28 17:12:34 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-28 17:12:34 释放结果集
+2015-08-28 17:12:34 完成整个查询任务,所用时间为0.0026500225067139

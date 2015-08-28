@@ -23,7 +23,7 @@
             //echo "<br>".$user['usertype'];
             //echo "<br>".$user['username'];
             if(3 == $user['usertype']){
-                jumpto(constant("HOME")."/views/adminframe.php");
+                jumpto(constant("HOME")."/adminviews/adminframe.php");
             }
         }   
     }
