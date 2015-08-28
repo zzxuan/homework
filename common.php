@@ -1,4 +1,5 @@
 <?php
+    require_once('phplibs/hwconstant.php');
     define("HOME","/homework");
     
     function checklogin(){

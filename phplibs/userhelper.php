@@ -128,6 +128,22 @@ class hwuser
         if (isset($row['usertype']))
             $this->usertype = $row['usertype'];
     }
+    
+    public static function getuserbyname($username){
+        $db = new DB();
+        $query = $db->query("select * from " . hwuser::$tabName . " where
+            username = '".$username."'");
+        if (null == $query)
+            return null;
+
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hwuser();
+            $info->setvalues($row);
+            return $info;
+        }
+        return null;
+    }
+
 
 }
 ?>
