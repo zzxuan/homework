@@ -39,26 +39,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加老师</title>
+<title>添加人员</title>
+<link href="../styles/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body><form action="" method="post">
-  <p>
-    登录名： 
-      <input type="text" name="uname" placeholder="请输入登录名"/>
-  </p>
-  <p>姓  名 :
-    <input type="text" name="disname" placeholder="请输入姓  名"/>
-</p>
-  <p>密码:
-    <input type="password" name="pass1" placeholder="请输入密码"/>
-  </p>
-  <p>再次输入:
-    <input type="password" name="pass2" placeholder="请输入密码"/>
-  </p>
-  <p>
-    <input type="submit" name="Submit" value="确定" />
-  </p>
+<body>
+<div class="formbody">
+    <div class="formtitle"><span>
+    <?php
+        if(!isset($_SESSION['addusertype'])){
+            echo "添加人员";
+        }
+        else if(USERADMIN == $_SESSION['addusertype']){
+            echo "添加管理员";
+        }else if(USERTEACHER == $_SESSION['addusertype']){
+            echo "添加老师";
+        }else if(USERSTUDENT == $_SESSION['addusertype']){
+            echo "添加学生";
+        }
+    ?>
+    </span></div>
+<form action="" method="post">
+<ul class="forminfo">
+<li><label>登录名：</label>
+            <input type="text" name="uname" placeholder="请输入登录名" class="dfinput" />
+            </li>
+            <li>
+  <li><label>姓  名 :</label>
+    <input type="text" name="disname" placeholder="请输入姓  名" class="dfinput" />
+</li>
+  <li><label>密码:</label>
+    <input type="password" name="pass1" placeholder="请输入密码" class="dfinput" />
+  </li>
+  <li><label>再次输入:</label>
+    <input type="password" name="pass2" placeholder="请输入密码" class="dfinput" />
+  </li>
+  <li><label>&nbsp;</label>
+    <input type="submit" name="Submit" value="确定" class="btn" />
+  </li>
+  </ul>
 </form>
+</div>
+
 </body>
 </html>

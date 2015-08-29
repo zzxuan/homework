@@ -50,11 +50,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/table.css" rel="stylesheet" type="text/css" media="screen" />
 <title>班级编辑</title>
+<link href="../styles/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../styles/js/jquery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".click").click(function(){
+  $(".tip").fadeIn(200);
+  });
+  
+  $(".tiptop a").click(function(){
+  $(".tip").fadeOut(200);
+});
+
+  $(".sure").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+  $(".cancel").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+});
+</script>
+
 </head>
 
 <body>
+<div class="mainframeinfo">
 <p>班名:<?php
 if (null != $hwcls) {
     echo $hwcls->hwclassname;
@@ -67,17 +91,17 @@ if (null != $teacher) {
 ?></p>
 <form id="form1" name="form1" method="post" action="">
   修改
-    <input type="text" placeholder="请输入账号" name="teaname" />
-    <input type="submit" name="uptea" value="更新" />
+    <input type="text" placeholder="请输入账号" name="teaname" class="dfinput"/>
+    <input type="submit" name="uptea" value="更新" class="btn"/>
 </form>
 <p>学生</p>
 <form id="form2" name="form2" method="post" action="">
   添加
-    <input type="text" placeholder="请输入账号" name="stuname" />
-    <input type="submit" name="addstu" value="新增" />
+    <input type="text" placeholder="请输入账号" name="stuname" class="dfinput" />
+    <input type="submit" name="addstu" value="新增" class="btn"/>
 </form>
 <p>&nbsp;</p>
-<table class="bordered">
+<table class="tablelist">
     <thead>
 
     <tr>     
@@ -85,6 +109,7 @@ if (null != $teacher) {
 		<th>姓名</th>
     </tr>
     </thead>
+    <tbody>
 <?php
 if (null != $students) {
     foreach ($students as $stu) {
@@ -93,7 +118,11 @@ if (null != $students) {
     }
 }
 ?>
+</tbody>
 </table>
-<p>&nbsp;</p>
+</div>
+<script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+</script>
 </body>
 </html>

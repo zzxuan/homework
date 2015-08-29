@@ -9,11 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<br><font color=\"#FF0000\">请先输入....</font></br>";
         exit;
     }
-    if(hwclass::addhwclass($_POST['hwclassname'],$_POST['hwclassdesc'])){
+    if (hwclass::addhwclass($_POST['hwclassname'], $_POST['hwclassdesc'])) {
         jumpto("adminhwclass.php");
         exit();
-    }
-    else{
+    } else {
         echo "<br><font color=\"#FF0000\">添加失败....</font></br>";
         exit;
     }
@@ -26,20 +25,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加班级</title>
+<link href="../styles/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
-  <p>名称
-    <input type="text" name="hwclassname" />
-</p>
-  <p>描述</p>
-  <p>	
-    <textarea name="hwclassdesc" cols="60" rows="20"></textarea>
-  </p>
-  <p>
-    <input type="submit" name="Submit" value="提交" />
-  </p>
-</form>
+<div class="formbody">
+    <div class="formtitle"><span>添加班级</span></div>
+    <form id="form1" name="form1" method="post" action="">
+        <ul class="forminfo">
+          <li><label>名称</label>
+            <input type="text" name="hwclassname" class="dfinput"/>
+            <i>标题不能超过30个字符</i>
+            </li>
+            <li>
+          <label>描述</label>	
+            <textarea name="hwclassdesc" cols="60" rows="20" class="textinput"></textarea>
+            </li>
+          <li>
+            <label>&nbsp;</label>
+            <input type="submit" name="Submit" value="提交" class="btn"/>
+          </li>
+          </ul>
+    </form>
+</div>
 </body>
 </html>

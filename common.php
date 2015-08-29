@@ -22,8 +22,11 @@
             //echo "<br>".$user['userid'];
             //echo "<br>".$user['usertype'];
             //echo "<br>".$user['username'];
-            if(3 == $user['usertype']){
+            if(USERADMIN == $user['usertype']){
                 jumpto(constant("HOME")."/adminviews/adminframe.php");
+            }
+            else if(USERTEACHER == $user['usertype']){
+                jumpto(HOME."/teacherviews/teacherframe.php");
             }
         }   
     }
