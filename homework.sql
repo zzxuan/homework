@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-08-30 01:05:32
+Date: 2015-08-30 18:36:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -81,15 +81,19 @@ CREATE TABLE `hw_hmwork` (
   `hmworktitle` varchar(1024) DEFAULT NULL,
   `hmworkrequire` varchar(4096) DEFAULT NULL,
   `hmworkcontent` text,
+  `hmworkstate` int(11) DEFAULT NULL,
   `hwclassid` int(11) DEFAULT NULL,
   `teacherid` int(11) DEFAULT NULL,
   `createtime` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`hmworkid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hw_hmwork
 -- ----------------------------
+INSERT INTO `hw_hmwork` VALUES ('1', '作业一', '实打实大师的', '<p>的撒打算打算打算</p>', '3', '1', '13', '2015-08-30 10:28:56');
+INSERT INTO `hw_hmwork` VALUES ('2', '作业', '啥都实打实大师的', '<p>四大大三大</p><p>sdasdd<span style=\"font-size: 18px;\"><strong>sadas四打算</strong></span></p>', '3', '1', '13', '2015-08-30 18:31:48');
+INSERT INTO `hw_hmwork` VALUES ('3', '四大大三大四', '四大大三大四打算大声道', '<p>18:32:582015-08-30<img src=\"/homework/data/ue/upload/image/20150830/1440930824130941.png\" title=\"1440930824130941.png\" alt=\"logo.png\"/></p>', '3', '1', '13', '2015-08-30 18:33:52');
 
 -- ----------------------------
 -- Table structure for `hw_hmworkres`
@@ -140,7 +144,7 @@ CREATE TABLE `hw_user` (
   `usertype` int(11) DEFAULT NULL,
   `usertime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hw_user
@@ -156,3 +160,4 @@ INSERT INTO `hw_user` VALUES ('19', 'xiaohong', '小红', '202cb962ac59075b964b0
 INSERT INTO `hw_user` VALUES ('20', 'xiaoxiao', '小小', '202cb962ac59075b964b07152d234b70', '2', null);
 INSERT INTO `hw_user` VALUES ('21', 'xx', 'xx', '202cb962ac59075b964b07152d234b70', '2', null);
 INSERT INTO `hw_user` VALUES ('22', 'deckey', 'deckey', '202cb962ac59075b964b07152d234b70', '1', null);
+INSERT INTO `hw_user` VALUES ('23', 'qwe', '\'\'\'', '202cb962ac59075b964b07152d234b70', '1', null);

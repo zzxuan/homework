@@ -40,19 +40,19 @@ class hwuser
     {
         $db = new DB();
         $query = $db->query("select * from " . hwuser::$tabName . " where
-            username = '" . $uname . "' and userpassword = '" . md5($upass) .
+            username = '" . mysql_real_escape_string($uname) . "' and userpassword = '" . md5($upass) .
             "' limit 1");
         if (null == $query)
             return null;
         while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
             $info = new hwuser();
-            $info->userid = $row['userid'];
-            $info->username = $row['username'];
-            $info->usertype = $row['usertype'];
+            $info->setvalues($row);
+            //return $info;
             return array(
                 "userid" => $row['userid'],
                 "username" => $row['username'],
                 "usertype" => $row['usertype'],
+                "userpassword" => $row['userpassword'],
                 "userdisplay" => $row['userdisplay']);
         }
         return null;
@@ -144,6 +144,6 @@ class hwuser
         return null;
     }
 
-
+    
 }
 ?>

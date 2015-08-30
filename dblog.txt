@@ -656,3 +656,47 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
             username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
 2015-08-29 16:43:41 释放结果集
 2015-08-29 16:43:41 完成整个查询任务,所用时间为0.0025150775909424
+2015-08-30 07:22:44 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 07:22:44 释放结果集
+2015-08-30 07:22:44 完成整个查询任务,所用时间为0.11358785629272
+2015-08-30 08:32:36 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 08:32:36 释放结果集
+2015-08-30 08:32:36 完成整个查询任务,所用时间为0.0059299468994141
+2015-08-30 08:33:50 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-30 08:33:50 释放结果集
+2015-08-30 08:33:50 完成整个查询任务,所用时间为0.0031750202178955
+2015-08-30 08:34:50 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 08:34:50 释放结果集
+2015-08-30 08:34:50 完成整个查询任务,所用时间为0.0034899711608887
+2015-08-30 09:25:08 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-08-30 09:25:08 释放结果集
+2015-08-30 09:25:08 完成整个查询任务,所用时间为0.0024571418762207
+2015-08-30 09:52:31 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 09:52:31 释放结果集
+2015-08-30 09:52:31 完成整个查询任务,所用时间为0.0023689270019531
+2015-08-30 09:54:20 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 09:54:20 释放结果集
+2015-08-30 09:54:20 完成整个查询任务,所用时间为0.0033819675445557
+2015-08-30 09:57:21 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 09:57:21 释放结果集
+2015-08-30 09:57:21 完成整个查询任务,所用时间为0.0034060478210449
+2015-08-30 10:01:17 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 10:01:17 释放结果集
+2015-08-30 10:01:17 完成整个查询任务,所用时间为0.0022141933441162
+2015-08-30 10:04:36 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 10:04:36 释放结果集
+2015-08-30 10:04:36 完成整个查询任务,所用时间为0.0061159133911133
+2015-08-30 10:12:00 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-08-30 10:12:00 释放结果集
+2015-08-30 10:12:00 完成整个查询任务,所用时间为0.002396821975708

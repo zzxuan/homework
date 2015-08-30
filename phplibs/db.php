@@ -80,7 +80,8 @@ Class DB {
         }
         while(list($key,$val)=each($dataArray)) {
             $field .="$key,";
-            $value .="'$val',";
+            //$value .="'$val',";
+            $value .= "'".mysql_real_escape_string($val)."',";//防止注入
         }
         $field = substr( $field,0,-1);
         $value = substr( $value,0,-1);
