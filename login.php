@@ -7,11 +7,11 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = hwuser::userlogin($_POST['username'],$_POST['password']);
             if(null == $user){
-                echo "ÁôªÂΩïÂ§±Ë¥•";
+                echo "µ«¬º ß∞‹";
             }
             else{
                 $_SESSION['userinfo'] = $user;
-                //echo "ÁôªÂΩïÊàêÂäü";
+                //echo "µ«¬º≥…π¶";
                 //header('Location:jumpto.php');
                 gotoMainview();
                 exit;
@@ -22,7 +22,7 @@
 <html> 
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset="UTF-8"> 
-<title>ÁôªÂΩï</title> 
+<title>µ«¬º</title> 
 <style type="text/css"> 
 body { 
     margin:0; 
@@ -138,7 +138,7 @@ fieldset span {
     font-size:12px; 
 } 
 </style> 
-<!--‰∏∫‰∫ÜËÆ©IEÊîØÊåÅHTML5ÂÖÉÁ¥†ÔºåÂÅöÂ¶Ç‰∏ãÊìç‰ΩúÔºö--> 
+<!--Œ™¡À»√IE÷ß≥÷HTML5‘™Àÿ£¨◊ˆ»Áœ¬≤Ÿ◊˜£∫--> 
 <!--[if IE]> 
 <script type="text/javascript"> 
 document.createElement("section"); 
@@ -153,19 +153,19 @@ document.createElement("footer");
   <form action="#" method="post"> 
     <section class="loginForm"> 
       <header> 
-        <h1>ÁôªÂΩï</h1> 
+        <h1>µ«¬º</h1> 
       </header> 
       <div class="loginForm_content"> 
         <fieldset> 
           <div class="inputWrap"> 
-            <input type="text" name="username" placeholder="ËØ∑ËæìÂÖ•Ë¥¶Âè∑" autofocus required> 
+            <input type="text" name="username" placeholder="«Î ‰»Î’À∫≈" autofocus required> 
           </div> 
           <div class="inputWrap"> 
-            <input type="password" name="password" placeholder="ËØ∑ËæìÂÖ•ÂØÜÁ†Å" required> 
+            <input type="password" name="password" placeholder="«Î ‰»Î√‹¬Î" required> 
           </div> 
         </fieldset> 
         <fieldset> 
-          <input type="submit" value="ÁôªÂΩï"> 
+          <input type="submit" value="µ«¬º"> 
         </fieldset> 
       </div> 
     </section> 
