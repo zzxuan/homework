@@ -33,9 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($clssid == 0){
             echo "<br><font color=\"#FF0000\">您选的班级不存在</font></br>";
         }else{
-            if(hmwork::addhmwork($_POST['hmworktitle'],$_POST['hmworkrequire'],
-            $_POST['hwclasscontent'],$clssid,$user->userid)){
-                echo "<br><font color=\"#FF0000\">布置作业成功</font></br>";
+            $hmid = hmwork::addhmwork($_POST['hmworktitle'],$_POST['hmworkrequire'],
+            $_POST['hwclasscontent'],$clssid,$user->userid);
+            if($hmid != 0){
+                jumpto("../commonviews/showhmwork.php?id=".$hmid);
             }else{
                 echo "<br><font color=\"#FF0000\">布置作业失败</font></br>";
             }
@@ -91,6 +92,12 @@ $(document).ready(function(e) {
 </head>
 
 <body>
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li>布置作业</li>
+    </ul>
+</div>
 <div class="mainframeinfo">
     <div class="formbody">
         <div class="formtitle"><span>布置作业</span></div>

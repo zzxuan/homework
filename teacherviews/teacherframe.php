@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>后台管理</title>
+<title>老师操作</title>
 </head>
 
 <frameset rows="88,*" cols="*" frameborder="no" border="0" framespacing="0">
