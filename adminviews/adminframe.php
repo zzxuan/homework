@@ -14,7 +14,7 @@
   <frame src="adminmenu.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
   <frameset cols="*" frameborder="no" border="0" framespacing="0">
     <!--<frame name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />-->
-    <frame name="rightFrame" id="rightFrame" title="rightFrame" />
+    <frame src="../welcome.php" name="rightFrame" id="rightFrame" title="rightFrame" />
   </frameset>
 </frameset>
 <noframes><body>

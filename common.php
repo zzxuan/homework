@@ -45,7 +45,10 @@ function gotoMainview()
         } else
             if (USERTEACHER == $user->usertype) {
                 jumpto(HOME . "/teacherviews/teacherframe.php");
-            }
+            } else
+                if (USERSTUDENT == $user->usertype) {
+                    jumpto(HOME . "/studentviews/studentframe.php");
+                }
     }
 }
 ?>

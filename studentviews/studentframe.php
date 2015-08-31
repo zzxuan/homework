@@ -7,11 +7,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>老师操作</title>
+<title>在线作业系统</title>
 </head>
 
 <frameset rows="88,*" cols="*" frameborder="no" border="0" framespacing="0">
-  <frame src="teachermenu.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+  <frame src="studentmenu.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
   <frameset cols="*" frameborder="no" border="0" framespacing="0">
     <frame src="../welcome.php" name="rightFrame" id="rightFrame" title="rightFrame" />
   </frameset>
