@@ -15,6 +15,7 @@ class hmwork
     public $hmworkstate; //作业状态
 
     public $hwclassname;
+    public $userdisplay;
 
     function setvalues($row)
     {
@@ -39,6 +40,8 @@ class hmwork
 
         if (isset($row['hwclassname']))
             $this->hwclassname = $row['hwclassname'];
+        if (isset($row['userdisplay']))
+            $this->userdisplay = $row['userdisplay'];
     }
 
     //添加作业
@@ -65,7 +68,7 @@ class hmwork
 
     public static function gethmworkbyid($hmid)
     {
-        if (null == $hmid||!is_numeric($hmid)) {
+        if (null == $hmid || !is_numeric($hmid)) {
             return null;
         }
         $sql = "select * from hw_hmwork where hmworkid = " . $hmid;
@@ -80,11 +83,11 @@ class hmwork
             return $info;
         }
     }
-    
+
     //根据老师id查询作业,不包括作业内容
     public static function gethmworkbyteachernoc($teacherid)
     {
-        if (null == $teacherid ||!is_numeric($teacherid)) {
+        if (null == $teacherid || !is_numeric($teacherid)) {
             return null;
         }
         $sql = "SELECT a.hmworkid,a.hmworktitle,a.hmworkstate,a.hwclassid,
@@ -106,6 +109,62 @@ class hmwork
         return $rc;
     }
 
+    //获得学生没做的作业
+    public static function getstudentnewhmwork($studentid)
+    {
+        if (null == $studentid || !is_numeric($studentid)) {
+            return null;
+        }
+        
+        $sql = "select hk.hmworkid,hk.hmworktitle,hk.createtime,class.hwclassname ,us.userdisplay 
+        from hw_hmwork hk,hw_class class,hw_classstudent cs ,hw_user us 
+        where hk.hwclassid=class.hwclassid and 
+        hk.hwclassid = cs.hwclassid and us.userid = hk.teacherid and 
+        cs.studentid = '" . $studentid . "' and hk.hmworkid not in 
+        (select hmworkid from hw_hmworksub where studentid = '" . $studentid .
+            "') ORDER BY hk.hmworkid DESC";
+        // ORDER BY a.hmworkid DESC";
+        $db = new DB();
+        $query = $db->query($sql);
+
+        if (null == $query)
+            return null;
+        $rc = array();
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hmwork();
+            $info->setvalues($row);
+            $rc[] = $info;
+        }
+        return $rc;
+    }
+
+    //获得学生做过的作业
+    public static function getstudentoldhmwork($studentid)
+    {
+        if (null == $studentid || !is_numeric($studentid)) {
+            return null;
+        }
+        $sql = "select hk.hmworkid,hk.hmworktitle,hk.createtime,class.hwclassname ,us.userdisplay 
+        from hw_hmwork hk,hw_class class,hw_classstudent cs ,hw_user us 
+        where hk.hwclassid=class.hwclassid and 
+        hk.hwclassid = cs.hwclassid and us.userid = hk.teacherid and 
+        cs.studentid = '" . $studentid . "' and hk.hmworkid in 
+        (select hmworkid from hw_hmworksub where studentid = '" . $studentid .
+            "') ORDER BY hk.hmworkid DESC";
+        // ORDER BY a.hmworkid DESC";
+        $db = new DB();
+        $query = $db->query($sql);
+
+        if (null == $query)
+            return null;
+        $rc = array();
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hmwork();
+            $info->setvalues($row);
+            $rc[] = $info;
+        }
+        return $rc;
+    }
 
 }
 
