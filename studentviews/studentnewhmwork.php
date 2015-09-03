@@ -72,7 +72,7 @@ if ($user->usertype == USERSTUDENT) { //如果是学生
             <td>" . $hk->userdisplay . "</td>
             <td width=\"180\">" . $hk->createtime . "</td>
             <td width=\"50\"><a href=\"../commonviews/showhmwork.php?id=".$hk->hmworkid."\" class=\"tablelink\">查看</a></td>      
-            <td width=\"60\"><a href=\"../commonviews/showhmwork.php?id=".$hk->hmworkid."\" class=\"tablelink\">交作业</a></td>
+            <td width=\"60\"><a href=\"studenthmworksub.php?id=".$hk->hmworkid."\" class=\"tablelink\">交作业</a></td>
             </tr>";
         }
     }
