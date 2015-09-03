@@ -10,7 +10,16 @@
 <script type="text/javascript" src="../styles/js/imgshow.js"></script>
 <script language="javascript">
 $(function(){
-    $("#fileupload").change(function(){ //选择文件 
+    
+
+});
+    function filechange(){ //选择文件 
+        //alert("ld change");
+        var obj = document.getElementById("fileupload");
+        if(obj.value == ''){
+            alert("请选择文件");
+            return;
+        }
         $("#myupload").ajaxSubmit({ 
             dataType:  'json', //数据格式为json 
             beforeSend: function() { //开始上传 
@@ -24,13 +33,14 @@ $(function(){
                 //alert(data.name);
                 //alert(data.picsrc + ',size = '+data.size);
                 addElementLi(data.picsrc);
+                //var obj = document.getElementById("fileupload");
+                obj.outerHTML = obj.outerHTML.replace(/(value=\").+\"/i, "$1\"");
             }, 
             error:function(xhr){ //上传失败 
                 alert(xhr.responseText); //返回失败信息 
             } 
         }); 
-    });
-});
+    };
 function uploadfile()
 { 
     $("#fileupload").click(); 
@@ -78,10 +88,11 @@ function addElementLi(imgpath)
     <div style="padding:8px 8px 8px 95px;">	
 
     <div class="tools"  style="padding:8px 8px 8px 15px;">
-    <form id='myupload' action='../phplibs/studentsubimg.php' method='post' enctype='multipart/form-data'>
-    <input type="file" style="display: none" id="fileupload" name="mypic"/></form>
+
     	<ul class="toolbar">
-        <li class="click" onclick="uploadfile()"><span><img src="../styles/images/t01.png" /></span>上传图片</li>
+            <li><form id='myupload' action='../phplibs/studentsubimg.php' method='post' enctype='multipart/form-data'>
+    <input type="file" id="fileupload" name="mypic"/></form></li>
+        <li class="click" onclick="filechange()"><span><img src="../styles/images/t01.png" /></span>上传图片</li>
         <li class="click"><span><img src="../styles/images/t02.png" /></span>提交作业</li>
         </ul>
     
