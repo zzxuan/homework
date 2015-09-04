@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $updir = "/data/studentfiles/";
     if ($picname != "") {
         $type = strstr($picname, '.'); //限制上传格式
+        $type =  strtolower($type);//转为小写
         if ($type != ".gif" && $type != ".jpg" && $type != ".png" && $type != ".bmp" &&
             $type != ".jpeg") {
             echo '图片格式不对！';
