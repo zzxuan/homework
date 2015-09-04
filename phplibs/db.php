@@ -78,10 +78,14 @@ Class DB {
             $this->halt('没有要插入的数据');
             return false;
         }
+        $ismagpc = get_magic_quotes_gpc();//判断是否需要转义
         while(list($key,$val)=each($dataArray)) {
             $field .="$key,";
-            $value .="'$val',";
-            //$value .= "'".mysql_real_escape_string($val,$this->link_id)."',";//防止注入
+            if($ismagpc){
+                $value .="'$val',";
+            }else{
+                $value .= "'".mysql_real_escape_string($val,$this->link_id)."',";//防止注入
+            }
         }
         $field = substr( $field,0,-1);
         $value = substr( $value,0,-1);

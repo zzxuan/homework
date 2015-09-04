@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-09-02 23:30:56
+Date: 2015-09-04 23:57:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -135,10 +135,26 @@ CREATE TABLE `hw_hmworksub` (
   `hmworkid` int(11) DEFAULT NULL,
   `studentid` int(11) DEFAULT NULL,
   PRIMARY KEY (`hmworksubid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hw_hmworksub
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `hw_img`
+-- ----------------------------
+DROP TABLE IF EXISTS `hw_img`;
+CREATE TABLE `hw_img` (
+  `imgid` int(11) NOT NULL AUTO_INCREMENT,
+  `imgtype` int(11) DEFAULT NULL,
+  `imgparentid` int(11) DEFAULT NULL,
+  `imgsrc` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`imgid`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of hw_img
 -- ----------------------------
 
 -- ----------------------------

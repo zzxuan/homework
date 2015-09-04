@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once ("../common.php");
+
 checklogin();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_FILES["file"]["error"] > 0) {
@@ -19,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
         $rand = rand(100, 999);
-        $pics = 'qwe'.date("YmdHis") . $rand . $type; //命名图片名称
+        $pics = 'student'.date("YmdHis") . $rand . $type; //命名图片名称
         //上传路径
         $upfile = dirname(dirname(__FILE__)).$updir;
         if (!file_exists($upfile)) { // 判断存放文件目录是否存在
