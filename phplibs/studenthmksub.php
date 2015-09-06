@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "提交失败";
         exit;
     }
-    $arr = array('res' => '成功');
+    $arr = array('hmid' => $hmid,'uid'=>getloginuser()->userid);
     echo json_encode($arr); //输出json数据
 }
 ?>

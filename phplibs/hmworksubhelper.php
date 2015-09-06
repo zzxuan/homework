@@ -36,6 +36,8 @@ class hmworksub
             $this->hmworkid = $row['hmworkid'];
         if (isset($row['studentid']))
             $this->studentid = $row['studentid'];
+        if (isset($row['hmworktitle']))
+            $this->hmworktitle = $row['hmworktitle'];
     }
 
     public static function addhmksub($hmkid, $studid, $desc, $imgsrcarr)
@@ -45,13 +47,56 @@ class hmworksub
             "hmworkid" => $hmkid,
             "studentid" => $studid,
             "hmworksubdesc" => $desc,
-            "createtime"=>date("Y-m-d H:i:s")
-            ))) {
+            "createtime" => date("Y-m-d H:i:s")))) {
             return false;
         }
-        
+
         $id = $db->insert_id();
-        return hwimg::addimgs(IMGTYPEHMKSUB,$id,$imgsrcarr);
+        return hwimg::addimgs(IMGTYPEHMKSUB, $id, $imgsrcarr);
+    }
+
+    public static function gethmksub($hmwsubid)
+    {
+        if (null == $hmwsubid || !is_numeric($hmwsubid)) {
+            return null;
+        }
+        $sql = "select a.*,b.hmworktitle from hw_hmworksub a,hw_hmwork b 
+        where a.hmworkid = b.hmworkid a.hmworksubid = " . $hmwsubid . " limit 1";
+        $db = new DB();
+        $query = $db->query($sql);
+
+        if (null == $query)
+            return null;
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hmworksub();
+            $info->setvalues($row);
+            $info->subimgs = hwimg::getimgs(IMGTYPEHMKSUB, $hmwsubid); //获得图片
+            return $info;
+        }
+        return null;
+    }
+
+    public static function gethmksubbyhmandstu($hmid, $studid)
+    {
+        if (null == $hmid || !is_numeric($hmid) 
+        || null == $studid || !is_numeric($studid)) {
+            return null;
+        }
+        $sql = "select a.*,b.hmworktitle from hw_hmworksub a,hw_hmwork b 
+        where a.hmworkid = b.hmworkid 
+        and a.hmworkid = " . $hmid . " and a.studentid = ".$studid." limit 1";
+        $db = new DB();
+        $query = $db->query($sql);
+
+        if (null == $query)
+            return null;
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hmworksub();
+            $info->setvalues($row);
+            $info->subimgs = hwimg::getimgs(IMGTYPEHMKSUB, $info->hmworksubid); //获得图片
+            return $info;
+        }
+        return null;
     }
 
 

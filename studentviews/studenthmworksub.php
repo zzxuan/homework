@@ -113,7 +113,8 @@ function subhmwork(){
              alert(xhr.responseText); //返回失败信息 
          },  
          success: function(msg){//如果调用php成功    
-             alert('提交作业完成!');
+             //alert('提交作业完成!');
+             document.location="../commonviews/ShowhmworkResault.php?hmid="+msg.hmid+"&uid="+msg.uid;
          }
      });
 }

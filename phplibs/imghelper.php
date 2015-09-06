@@ -23,7 +23,7 @@ class hwimg
             }
             return true;
         } else {
-            return false;
+            return null == $imgsrarr;//如果图片集合为空则不需要提交返回true
         }
     }
 
