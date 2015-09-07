@@ -48,7 +48,7 @@ class hmworksub
 
     public static function addhmksub($hmkid, $studid, $desc, $imgsrcarr)
     {
-        if (gethmksubbyhmandstu($hmkid, $studid) != null) {
+        if (hmworksub::gethmksubbyhmandstu($hmkid, $studid) != null) {
             //已经提交过
             return false;
         }

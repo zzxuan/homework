@@ -146,3 +146,7 @@
             username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
 2015-09-07 23:24:04 释放结果集
 2015-09-07 23:24:04 完成整个查询任务,所用时间为0.0018811225891113
+2015-09-08 00:15:38 查询 select * from hw_user where
+            username = 'xiaoming' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-09-08 00:15:38 释放结果集
+2015-09-08 00:15:38 完成整个查询任务,所用时间为0.0020971298217773
