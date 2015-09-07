@@ -83,6 +83,25 @@ class hmwork
             return $info;
         }
     }
+    
+    public static function gethmworkbyidnoc($hmid)
+    {
+        if (null == $hmid || !is_numeric($hmid)) {
+            return null;
+        }
+        $sql = "select hmworkid,hmworktitle,hmworkstate,hwclassid,
+        createtime,hmworkrequire,teacherid from hw_hmwork where hmworkid = " . $hmid;
+        $db = new DB();
+        $query = $db->query($sql);
+
+        if (null == $query)
+            return null;
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hmwork();
+            $info->setvalues($row);
+            return $info;
+        }
+    }
 
     //根据老师id查询作业,不包括作业内容
     public static function gethmworkbyteachernoc($teacherid)

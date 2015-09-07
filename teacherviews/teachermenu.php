@@ -31,7 +31,7 @@ $(function(){
         
     <ul class="nav">
     <li><a href="../welcome.php" target="rightFrame" class="selected"><img src="../styles/images/icon01.png" title="首页" /><h2>首页</h2></a></li>
-    <li><a href="imgtable.html" target="rightFrame"><img src="../styles/images/icon02.png" title="批改作业" /><h2>批改作业</h2></a></li>
+    <li><a href="teachernewsub.php" target="rightFrame"><img src="../styles/images/icon02.png" title="批改作业" /><h2>批改作业</h2></a></li>
     <li><a href="teacheraddhmwork.php"  target="rightFrame"><img src="../styles/images/icon03.png" title="布置作业" /><h2>布置作业</h2></a></li>
     <li><a href="teacherhmworks.php"  target="rightFrame"><img src="../styles/images/icon04.png" title="作业查看" /><h2>作业查看</h2></a></li>
     <li><a href="computer.html" target="rightFrame"><img src="../styles/images/icon05.png" title="我的学生" /><h2>我的学生</h2></a></li>

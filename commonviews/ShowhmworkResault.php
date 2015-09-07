@@ -4,6 +4,7 @@ require_once ("../common.php");
 checklogin();
 require_once ("../phplibs/hmworkhelper.php");
 require_once ("../phplibs/hmworksubhelper.php");
+require_once ("../phplibs/hmworkreshelper.php");
 
 $hmwksub = null;
 
@@ -21,6 +22,7 @@ if ($hmwksub == null) {
     echo "<br><font color=\"#FF0000\">该作业还未交</font></br>";
     exit();
 }
+$hres = hmworkres::gethresbysubid($hmwksub->hmworksubid);
 
 function addimg($imgpath)
 {
@@ -63,7 +65,7 @@ $(document).ready(function(e) {
     <span>位置：</span>
     <ul class="placeul">
     <li><a href="#">首页</a></li>
-    <li><a href="#">系统设置</a></li>
+    <li><a href="#" target="_blank">系统设置</a></li>
     </ul>
     </div>
     <div class="mainframeinfo">
@@ -75,16 +77,30 @@ $(document).ready(function(e) {
     <div class="itab">
   	<ul> 
     <li><a href="#tab1" class="selected">学生作业</a></li> 
-    <li><a href="#tab2">老师批改</a></li> 
+    <li><a href="#tab2"  <?php if (null == $hres){echo "style=\"display: none\"";} ?>>老师批改</a></li> 
   	</ul>
     </div> 
     
   	<div id="tab1" class="tabson">
+            
     <ul class="forminfo">
+    <?php
+if (null == $hres) {
+    $hmk = hmwork::gethmworkbyidnoc($hmwksub->hmworkid);
+    if ($hmk->teacherid == getloginuser()->userid) {
+        echo "<li><label>&nbsp;</label><a href=\"../teacherviews/teachercrthmk.php?id=".$hmwksub->hmworksubid."\"  target=\"_blank\"><input type='button' value=\"批改作业\" class=\"btn\"/></a></li>";
+        //</a>
+    } else {
+        echo "老师正在努力批改中...";
+    }
+} else {
+
+}
+?>
         <li><label>作业名</label>
             <input type="text" name="hwclassname" class="dfinput" value="<?php echo
-$hmwksub->hmworktitle; ?>" readonly="true"/><i>交作业时间 <?php echo
-$hmwksub->createtime; ?></i>
+$hmwksub->hmworktitle; ?>" readonly="true"/><i>交作业时间 <?php echo $hmwksub->
+createtime; ?></i>
           </li>
           <li><label>留言</label>
             <textarea name="hwclassdesc" cols="60" rows="20" class="textinput" readonly="true"><?php echo
@@ -108,7 +124,7 @@ if ($hmwksub->subimgs != null) {
     
     
   	<div id="tab2" class="tabson">
-    
+
     
     
     </div>  
