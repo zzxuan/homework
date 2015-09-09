@@ -120,7 +120,7 @@ class DB
 
         $value = "";
         while (list($key, $val) = each($dataArray)) {
-            if ($ismagpc) {
+            if (!$ismagpc) {
                 $k = mysql_real_escape_string($key, $this->link_id);
                 $v = mysql_real_escape_string($val, $this->link_id);
                 
