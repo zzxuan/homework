@@ -22,6 +22,13 @@ class hmworksub
     public $hwclassname;
     public $studentname;
 
+    public $hmworkresstate;
+        public $hmworkresscore;
+    public $hmworkresdesc;
+    public $hmworkrescontent;
+    public $rescreatetime;
+    public $teacherid;
+
     function setvalues($row)
     {
         if (null == $row)
@@ -44,6 +51,19 @@ class hmworksub
             $this->hwclassname = $row['hwclassname'];
         if (isset($row['userdisplay']))
             $this->studentname = $row['userdisplay'];
+
+        if (isset($row['hmworkresstate']))
+            $this->hmworkresstate = $row['hmworkresstate'];
+        if (isset($row['hmworkresscore']))
+            $this->hmworkresscore = $row['hmworkresscore'];
+        if (isset($row['hmworkresdesc']))
+            $this->hmworkresdesc = $row['hmworkresdesc'];
+        if (isset($row['hmworkrescontent']))
+            $this->hmworkrescontent = $row['hmworkrescontent'];
+        if (isset($row['rescreatetime']))
+            $this->rescreatetime = $row['rescreatetime'];
+        if (isset($row['teacherid']))
+            $this->teacherid = $row['teacherid'];
     }
 
     public static function addhmksub($hmkid, $studid, $desc, $imgsrcarr)
@@ -58,7 +78,9 @@ class hmworksub
             "hmworkid" => $hmkid,
             "studentid" => $studid,
             "hmworksubdesc" => $desc,
-            "createtime" => date("Y-m-d H:i:s")))) {
+            "createtime" => date("Y-m-d H:i:s"),
+            "hmworkresstate" => SUBSTATENONE
+            ))) {
             return false;
         }
 
@@ -119,11 +141,8 @@ class hmworksub
         $sql = "SELECT hsub.hmworkid,hsub.hmworksubid,hsub.studentid, hmk.hmworktitle,hsub.createtime,hc.hwclassname,hu.userdisplay 
         FROM hw_hmwork hmk,hw_hmworksub hsub,hw_class hc,hw_user hu 
         WHERE hmk.hmworkid = hsub.hmworkid AND hmk.teacherid = " . $teacherid .
-            " 
-        AND hc.hwclassid = hmk.hwclassid AND hu.userid = hsub.studentid 
-        AND hsub.hmworksubid not in 
-        (SELECT hmworksubid FROM hw_hmworkres hres WHERE hres.teacherid = " . $teacherid .
-            ")";
+            " and hsub.hmworkresstate = ".SUBSTATENONE. " 
+        AND hc.hwclassid = hmk.hwclassid AND hu.userid = hsub.studentid ";
         $db = new DB();
         $query = $db->query($sql);
 
@@ -136,6 +155,28 @@ class hmworksub
             $rt[] = $info;
         }
         return $rt;
+    }
+    
+    public static function teacsetres($subid,$teaid,$scor,$desc,$content)
+    {
+        if (null == $subid || !is_numeric($subid)
+            ||null == $teaid || !is_numeric($teaid)
+            ||null == $scor || !is_numeric($scor)
+        ) {
+            return null;
+        }
+        $db = new DB();
+        if (!$db->update("hw_hmworksub", array(
+            "hmworkresstate" => SUBSTATETEASETRES,//已批改标志
+            "hmworkresscore" => $scor,
+            "hmworkresdesc" => $desc,
+            "hmworkrescontent" => $content,
+            "rescreatetime" => date("Y-m-d H:i:s"),
+            "teacherid" => $teaid
+            )," hmworksubid = $subid")) {
+            return false;
+        }
+        return true;
     }
 
 

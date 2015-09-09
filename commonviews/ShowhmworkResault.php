@@ -4,7 +4,6 @@ require_once ("../common.php");
 checklogin();
 require_once ("../phplibs/hmworkhelper.php");
 require_once ("../phplibs/hmworksubhelper.php");
-require_once ("../phplibs/hmworkreshelper.php");
 
 $hmwksub = null;
 
@@ -22,7 +21,6 @@ if ($hmwksub == null) {
     echo "<br><font color=\"#FF0000\">该作业还未交</font></br>";
     exit();
 }
-$hres = hmworkres::gethresbysubid($hmwksub->hmworksubid);
 
 function addimg($imgpath)
 {
@@ -57,6 +55,30 @@ $(document).ready(function(e) {
 });
 
 </script>
+<style type="text/css">
+table {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
 </head>
 
 <body>
@@ -77,7 +99,7 @@ $(document).ready(function(e) {
     <div class="itab">
   	<ul> 
     <li><a href="#tab1" class="selected">学生作业</a></li> 
-    <li><a href="#tab2"  <?php if (null == $hres){echo "style=\"display: none\"";} ?>>老师批改</a></li> 
+    <li><a href="#tab2"  <?php if (SUBSTATENONE == $hmwksub->hmworkresstate){echo "style=\"display: none\"";} ?>>老师批改</a></li> 
   	</ul>
     </div> 
     
@@ -85,7 +107,7 @@ $(document).ready(function(e) {
             
     <ul class="forminfo">
     <?php
-if (null == $hres) {
+if (SUBSTATENONE == $hmwksub->hmworkresstate) {
     $hmk = hmwork::gethmworkbyidnoc($hmwksub->hmworkid);
     if ($hmk->teacherid == getloginuser()->userid) {
         echo "<li><label>&nbsp;</label><a href=\"../teacherviews/teachercrthmk.php?id=".$hmwksub->hmworksubid."\"  target=\"_blank\"><input type='button' value=\"批改作业\" class=\"btn\"/></a></li>";
@@ -124,7 +146,33 @@ if ($hmwksub->subimgs != null) {
     
     
   	<div id="tab2" class="tabson">
-
+        <ul class="forminfo">
+          <li><label><font color="#282DD7">作业名称</font></label>
+            <label><?php
+echo $hmwksub->hmworktitle;
+?></label>
+            </li>
+                      <li><label><font color="#282DD7">得分</font></label>
+            <div style="padding:8px 8px 8px 85px;border-top:1px solid #F4F4F4">
+            <?php
+echo $hmwksub->hmworkresscore;
+?></div>
+            </li>
+            <li><label><font color="#282DD7">描述</font></label>
+                <div style="padding:8px 8px 8px 85px;border-top:1px solid #F4F4F4">	
+                    <?php
+                        echo $hmwksub->hmworkresdesc;
+                    ?>
+                  </div>
+            </li>
+          <li><label><font color="#282DD7">详细内容</font></label>
+                  <div style="padding:8px 8px 8px 85px;border-top:1px solid #F4F4F4">	
+                    <?php
+                        echo $hmwksub->hmworkrescontent;
+                    ?>
+                  </div>
+            </li>
+          </ul>
     
     
     </div>  

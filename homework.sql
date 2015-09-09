@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-09-04 23:57:38
+Date: 2015-09-10 00:43:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -105,25 +105,6 @@ INSERT INTO `hw_hmwork` VALUES ('11', '主要', '飞规划局和哥哥家估计�
 INSERT INTO `hw_hmwork` VALUES ('12', '为我去恶趣味请问', '实打实大苏打实打实的', '<p>十大大苏打实打实大苏打</p><p><img src=\"/homework/data/ue/upload/image/20150901/1441122798340295.png\" title=\"1441122798340295.png\" alt=\"结构.png\"/></p><p>实打实大苏打似的撒旦盛大</p>', '3', '1', '13', '2015-09-01 23:53:32');
 
 -- ----------------------------
--- Table structure for `hw_hmworkres`
--- ----------------------------
-DROP TABLE IF EXISTS `hw_hmworkres`;
-CREATE TABLE `hw_hmworkres` (
-  `hmworkresid` int(11) NOT NULL AUTO_INCREMENT,
-  `hmworkresscore` int(11) DEFAULT NULL,
-  `hmworkresdesc` varchar(2048) DEFAULT NULL,
-  `hmworkrescontent` text,
-  `createtime` varchar(32) DEFAULT NULL,
-  `teacherid` int(11) DEFAULT NULL,
-  `hmworksubid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`hmworkresid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of hw_hmworkres
--- ----------------------------
-
--- ----------------------------
 -- Table structure for `hw_hmworksub`
 -- ----------------------------
 DROP TABLE IF EXISTS `hw_hmworksub`;
@@ -134,12 +115,19 @@ CREATE TABLE `hw_hmworksub` (
   `createtime` varchar(32) DEFAULT NULL,
   `hmworkid` int(11) DEFAULT NULL,
   `studentid` int(11) DEFAULT NULL,
+  `hmworkresstate` int(11) DEFAULT NULL,
+  `hmworkresscore` int(11) DEFAULT NULL,
+  `hmworkresdesc` varchar(2048) DEFAULT NULL,
+  `hmworkrescontent` text,
+  `rescreatetime` varchar(32) DEFAULT NULL,
+  `teacherid` int(11) DEFAULT NULL,
   PRIMARY KEY (`hmworksubid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hw_hmworksub
 -- ----------------------------
+INSERT INTO `hw_hmworksub` VALUES ('5', null, '1312', '2015-09-09 23:31:29', '1', '18', '1', '23', '23', '<p>323321312</p>', '2015-09-10 00:22:57', '13');
 
 -- ----------------------------
 -- Table structure for `hw_img`
@@ -156,6 +144,16 @@ CREATE TABLE `hw_img` (
 -- ----------------------------
 -- Records of hw_img
 -- ----------------------------
+INSERT INTO `hw_img` VALUES ('1', '1', '3', 'http://localhost:8080/homework/data/studentfiles/student20150906220031674.png');
+INSERT INTO `hw_img` VALUES ('2', '1', '3', 'http://localhost:8080/homework/data/studentfiles/student20150906220036472.png');
+INSERT INTO `hw_img` VALUES ('3', '1', '8', 'http://localhost:8080/homework/data/studentfiles/student20150906231523473.png');
+INSERT INTO `hw_img` VALUES ('4', '1', '8', 'http://localhost:8080/homework/data/studentfiles/student20150906231528438.png');
+INSERT INTO `hw_img` VALUES ('5', '1', '8', 'http://localhost:8080/homework/data/studentfiles/student20150906231531986.png');
+INSERT INTO `hw_img` VALUES ('6', '1', '9', 'http://localhost:8080/homework/data/studentfiles/student20150906231642294.png');
+INSERT INTO `hw_img` VALUES ('7', '1', '9', 'http://localhost:8080/homework/data/studentfiles/student20150906231645195.png');
+INSERT INTO `hw_img` VALUES ('8', '1', '10', 'http://localhost:8080/homework/data/studentfiles/student20150906233345548.jpg');
+INSERT INTO `hw_img` VALUES ('9', '1', '11', 'http://localhost:8080/homework/data/studentfiles/student20150908001545894.png');
+INSERT INTO `hw_img` VALUES ('10', '1', '5', 'http://localhost:8080/homework/data/studentfiles/student20150909233126313.png');
 
 -- ----------------------------
 -- Table structure for `hw_user`

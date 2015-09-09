@@ -4,35 +4,35 @@ require_once ("../common.php");
 checklogin();
 require_once ("../phplibs/userhelper.php");
 require_once ("../phplibs/hmworkhelper.php");
-require_once ("../phplibs/hwclasshelper.php");
+require_once ("../phplibs/hmworksubhelper.php");
 
 $user = getloginuser();
 if ($user->usertype != USERTEACHER) {
     echo "<br><font color=\"#FF0000\">请用老师账号登录</font></br>";
     exit();
 }
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (!isset($_GET['id'])) {
+        echo "<br><font color=\"#FF0000\">参数错误</font></br>";
+        exit();
+    } else {
+        $_SESSION['subid'] = $_GET['id'];
+    }
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ('' == $_POST['hmworktitle'] || '' == $_POST['hmworkhwclass'] || '' == $_POST['hmworkrequire'] ||
-        '' == $_POST['hwclasscontent']) {
+    if (!isset($_SESSION['subid'])) {
+        echo "<br><font color=\"#FF0000\">参数错误</font></br>";
+        exit();
+    }
+    if ('' == $_POST['resscore'] || '' == $_POST['resdesc'] || '' == $_POST['rescontent']) {
         echo "<br><font color=\"#FF0000\">请检查输入内容</font></br>";
     } else {
-        $clssid = 0;
-        foreach ($hwclassarr as $cls) {
-            if($cls->hwclassname == $_POST['hmworkhwclass']){
-                $clssid = $cls->hwclassid;
-            }
-        }
-        if($clssid == 0){
-            echo "<br><font color=\"#FF0000\">您选的班级不存在</font></br>";
-        }else{
-            $hmid = hmwork::addhmwork($_POST['hmworktitle'],$_POST['hmworkrequire'],
-            $_POST['hwclasscontent'],$clssid,$user->userid);
-            if($hmid != 0){
-                jumpto("../commonviews/showhmwork.php?id=".$hmid);
-            }else{
-                echo "<br><font color=\"#FF0000\">布置作业失败</font></br>";
-            }
+        if (!hmworksub::teacsetres($_SESSION['subid'], $user->userid, $_POST['resscore'], $_POST['resdesc'],
+            $_POST['rescontent'])) {
+            echo "<br><font color=\"#FF0000\">提交失败</font></br>";
+        } else {
+            echo "<br><font color=\"#FF0000\">提交成功</font></br>";
         }
     }
 }
@@ -97,17 +97,17 @@ $(document).ready(function(e) {
         <form id="form1" name="form1" method="post" action="">
             <ul class="forminfo">
               <li><label>得分<b>*</b></label>
-                <input type="text" name="hmworktitle" class="dfinput"/>
+                <input type="text" name="resscore" class="dfinput"/>
                 <i>必须输入整数</i>
                </li>
                <li>
                   <label>简评<b>*</b></label>	
-                  <textarea name="hmworkrequire" cols="60" rows="5" class="textinputmin"></textarea>
+                  <textarea name="resdesc" cols="60" rows="5" class="textinputmin"></textarea>
                </li>
                 <li>
                   <label>详细信息<b>*</b></label>
                   <div style="padding:8px 8px 8px 85px;">	
-                    <textarea name="hwclasscontent" id="editor" cols="60" rows="5"></textarea>
+                    <textarea name="rescontent" id="editor" cols="60" rows="5"></textarea>
                   </div>
                 </li>
                 <li><label>&nbsp;</label>

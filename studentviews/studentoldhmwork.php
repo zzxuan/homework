@@ -59,24 +59,32 @@ $(document).ready(function(){
     </thead>
     <tbody>
 <?php
-$user = getloginuser();
-if ($user->usertype == USERSTUDENT) { //如果是学生
-    $hmwks = hmwork::getstudentoldhmwork($user->userid);
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (!isset($_GET['id'])) {
+        echo "<br><font color=\"#FF0000\">参数错误</font></br>";
+        exit();
+    } else {
+        $hmwks = hmwork::getstudentoldhmwork($_GET['id']);
 
-    if ($hmwks != null) {
+        if ($hmwks != null) {
 
-        foreach ($hmwks as $hk) {
-            echo "<tr>
+            foreach ($hmwks as $hk) {
+                echo "<tr>
             <td>" . $hk->hmworktitle . "</td>
             <td>" . $hk->hwclassname . "</td>
             <td>" . $hk->userdisplay . "</td>
             <td width=\"180\">" . $hk->createtime . "</td>
-            <td width=\"50\"><a href=\"../commonviews/showhmwork.php?id=".$hk->hmworkid."\" class=\"tablelink\">查看</a></td>      
-            <td width=\"60\"><a href=\"../commonviews/ShowhmworkResault.php?hmid=".$hk->hmworkid."&uid=".$user->userid."\" class=\"tablelink\">完成情况</a></td>
+            <td width=\"50\"><a href=\"../commonviews/showhmwork.php?id=" . $hk->
+                    hmworkid . "\" class=\"tablelink\">查看</a></td>      
+            <td width=\"60\"><a href=\"../commonviews/ShowhmworkResault.php?hmid=" .
+                    $hk->hmworkid . "&uid=" . $_GET['id'] . "\" class=\"tablelink\">完成情况</a></td>
             </tr>";
+            }
         }
     }
+
 }
+
 ?>
 </tbody>
 </table>
