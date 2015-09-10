@@ -36,7 +36,7 @@ $(function(){
     $user = getloginuser();
         echo "studentoldhmwork.php?id=".$user->userid;
     ?>"  target="rightFrame"><img src="../styles/images/icon03.png" title="作业本" /><h2>作业本</h2></a></li>
-    <li><a href="teacherhmworks.php"  target="rightFrame"><img src="../styles/images/icon04.png" title="同学们" /><h2>同学们</h2></a></li>
+    <li><a href="studentsameclass.php"  target="rightFrame"><img src="../styles/images/icon04.png" title="同学们" /><h2>同学们</h2></a></li>
     <li><a href="computer.html" target="rightFrame"><img src="../styles/images/icon05.png" title="我自己" /><h2>我自己</h2></a></li>
     </ul>
             
@@ -48,9 +48,12 @@ $(function(){
     </ul>
      
     <div class="user">
-    <span>admin</span>
+    <span><?php 
+    $user = getloginuser();
+        echo $user->userdisplay;
+    ?>"</span>
     <i>消息</i>
-    <b>5</b>
+    <b>0</b>
     </div>    
     
     </div>

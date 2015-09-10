@@ -10,6 +10,9 @@ class hwclass
     public $hwclassname;
     public $hwclassdesc;
 
+    public $userdisplay;
+    public $userid;
+
     function setvalues($row)
     {
         if (null == $row)
@@ -20,6 +23,10 @@ class hwclass
             $this->hwclassname = $row['hwclassname'];
         if (isset($row['hwclassdesc']))
             $this->hwclassdesc = $row['hwclassdesc'];
+        if (isset($row['userdisplay']))
+            $this->userdisplay = $row['userdisplay'];
+        if (isset($row['userid']))
+            $this->userid = $row['userid'];
     }
 
     public static function addhwclass($name, $desc)
@@ -157,7 +164,47 @@ class hwclass
         return null;
     }
 
+    public static function getsameClassStduents($studentid)
+    {
+        $sql = "SELECT hu.userid,hu.userdisplay,hc.hwclassname 
+        FROM hw_classstudent hst,hw_class hc,hw_user hu,
+        (SELECT hcs.hwclassid FROM hw_classstudent hcs WHERE hcs.studentid = $studentid) a
+        WHERE hst.hwclassid = a.hwclassid AND hc.hwclassid = hst.hwclassid 
+        AND hu.userid = hst.studentid";
+        $db = new DB();
+        $query = $db->query($sql);
+        if (null == $query) {
+            return null;
+        }
+        $rt = array();
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hwclass();
+            $info->setvalues($row);
+            $rt[] = $info;
+        }
+        return $rt;
+    }
 
+    public static function getTeacherClassStduents($teacherid)
+    {
+        $sql = "SELECT hu.userid,hu.userdisplay,hc.hwclassname FROM hw_classstudent hst,hw_class hc,hw_user hu,
+(SELECT hcs.hwclassid FROM hw_classteacher hcs WHERE hcs.teacherid = $teacherid) a
+WHERE hst.hwclassid = a.hwclassid AND hc.hwclassid = hst.hwclassid 
+AND hu.userid = hst.studentid";
+        $db = new DB();
+        $query = $db->query($sql);
+        if (null == $query) {
+            return null;
+        }
+
+        $rt = array();
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hwclass();
+            $info->setvalues($row);
+            $rt[] = $info;
+        }
+        return $rt;
+    }
 }
 
 ?>
