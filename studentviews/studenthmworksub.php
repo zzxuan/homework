@@ -105,7 +105,7 @@ function subhmwork(){
     }
     
     $.ajax({
-         url: "../phplibs/studenthmksub.php",  
+         url: "../viewcontrollors/studenthmksub.php",  
          type: "POST",
          data:{desc:descstr,imgarr:imgsrcs},
          dataType: "json",
@@ -147,7 +147,7 @@ function subhmwork(){
     <div class="tools"  style="padding:8px 8px 8px 15px;">
 
     	<ul class="toolbar">
-            <li><form id='myupload' action='../phplibs/studentsubimg.php' method='post' enctype='multipart/form-data'>
+            <li><form id='myupload' action='../viewcontrollors/studentsubimg.php' method='post' enctype='multipart/form-data'>
     <input type="file" id="fileupload" name="mypic"/><span><label id="uplable"></label></span></form></li>
         <li class="click" onclick="filechange()"><span><img src="../styles/images/t01.png" /></span>上传图片</li>
         <li class="click" onclick="subhmwork()"><span><img src="../styles/images/t02.png" /></span>提交作业</li>

@@ -33,6 +33,26 @@ $(document).ready(function(){
 
 });
 </script>
+<script language="javascript">
+function deletehmwork(hmkid,tdobj){
+    if(!confirm("是否删除该作业,删除后将不可恢复！")){
+        return;
+    }
+    $.ajax({
+         url: "../viewcontrollors/teacherhmworksctrlor.php",  
+         type: "POST",
+         data:{mtype:1,id:hmkid},
+         dataType: "json",
+         error: function(xhr){  
+             alert(xhr.responseText); //返回失败信息 
+         },  
+         success: function(msg){//如果调用php成功    
+             var table=document.getElementById("hmktable");
+             table.deleteRow(tdobj.parentNode.parentNode.rowIndex)
+         }
+     });
+}
+</script>
 </head>
 <body>
 <div class="place">
@@ -45,7 +65,7 @@ $(document).ready(function(){
 
 <div class="mainframeinfo">
 
-<table class="tablelist">
+<table class="tablelist" id="hmktable">
     <thead>
 
     <tr>     
@@ -68,7 +88,8 @@ if ($user->usertype == USERTEACHER) { //如果是老师
             <td>" . mb_substr($hk->hmworkrequire,0,25,'utf-8') . "</td>
             <td>" . $hk->hwclassname . "</td>
             <td>" . $hk->createtime . "</td>
-            <td><a href=\"../commonviews/showhmwork.php?id=".$hk->hmworkid."\" class=\"tablelink\">查看</a></td>
+            <td ><a href=\"../commonviews/showhmwork.php?id=".$hk->hmworkid."\" class=\"tablelink\">查看</a>
+            <a href=\"#\" onclick=\"deletehmwork($hk->hmworkid,this)\" class=\"tablelink\">删除</a></td>
             </tr>";
         }
     }

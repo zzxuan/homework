@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once ("../common.php");
+require_once("../phplibs/functions.php");
 
 checklogin();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,14 +28,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mkdir($upfile, 0777, true);
         }
         $pic_path = $upfile . $pics;
+        $tem_path = $upfile."tem".$pics;
         if(!is_uploaded_file($_FILES['mypic']['tmp_name'])){
             echo '上传文件出错';
             exit;
         }
-        if(!move_uploaded_file($_FILES['mypic']['tmp_name'], $pic_path)){
+        if(!move_uploaded_file($_FILES['mypic']['tmp_name'], $tem_path)){//移到临时目录
             echo '移动文件出错';
             exit;
         }
+        if(!scal_pic($tem_path,$pic_path)){
+            echo '压缩图片出错...';
+            exit;
+        }
+        unlink($tem_path);//删除临时文件
     }
     $arr = array(
         'name' => $picname,

@@ -83,7 +83,7 @@ class hmwork
             return $info;
         }
     }
-    
+
     public static function gethmworkbyidnoc($hmid)
     {
         if (null == $hmid || !is_numeric($hmid)) {
@@ -134,7 +134,7 @@ class hmwork
         if (null == $studentid || !is_numeric($studentid)) {
             return null;
         }
-        
+
         $sql = "select hk.hmworkid,hk.hmworktitle,hk.createtime,class.hwclassname ,us.userdisplay 
         from hw_hmwork hk,hw_class class,hw_classstudent cs ,hw_user us 
         where hk.hwclassid=class.hwclassid and 
@@ -183,6 +183,15 @@ class hmwork
             $rc[] = $info;
         }
         return $rc;
+    }
+
+    public static function deletehmwork($hmkid)
+    {
+        if (null == $hmkid || !is_numeric($hmkid)) {
+            return null;
+        }
+        $db = new DB();
+        return $db->delete(hw_hmwork,"hmworkid = $hmkid");
     }
 
 }

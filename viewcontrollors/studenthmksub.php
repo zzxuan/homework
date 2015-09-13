@@ -3,7 +3,7 @@ session_start();
 require_once ("../common.php");
 checklogin();
 
-require_once ("hmworksubhelper.php");
+require_once ("../phplibs/hmworksubhelper.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_SESSION['studentdubhmid'])) {
         echo "选择作业出错";
