@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <td width=\"180\">" . $hk->createtime . "</td>
             <td width=\"50\"><a href=\"../commonviews/showhmwork.php?id=" . $hk->
                     hmworkid . "\" class=\"tablelink\">查看</a></td>      
-            <td width=\"60\"><a href=\"../commonviews/ShowhmworkResault.php?hmid=" .
+            <td width=\"80\"><a href=\"../commonviews/ShowhmworkResault.php?hmid=" .
                     $hk->hmworkid . "&uid=" . $_GET['id'] . "\" class=\"tablelink\">完成情况</a></td>
             </tr>";
             }
