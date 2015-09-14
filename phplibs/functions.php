@@ -47,6 +47,10 @@ function scal_pic($file_name,$file_new,$max_width = 650){
         if($pic_scal_arr[0]>$max_width){
                 $re_scal = ($max_width / $pic_scal_arr[0]);
         }
+        else{
+            copy($file_name,$file_new);
+            return true;
+        }
         $re_width = round($pic_scal_arr[0] * $re_scal);
         $re_height = round($pic_scal_arr[1] * $re_scal);
         //创建空图象
