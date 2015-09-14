@@ -23,11 +23,13 @@ class hmworksub
     public $studentname;
 
     public $hmworkresstate;
-        public $hmworkresscore;
+    public $hmworkresscore;
     public $hmworkresdesc;
     public $hmworkrescontent;
     public $rescreatetime;
     public $teacherid;
+    
+    public $teachername;
 
     function setvalues($row)
     {
@@ -64,6 +66,8 @@ class hmworksub
             $this->rescreatetime = $row['rescreatetime'];
         if (isset($row['teacherid']))
             $this->teacherid = $row['teacherid'];
+        if (isset($row['teachername']))
+            $this->teachername = $row['teachername'];
     }
 
     public static function addhmksub($hmkid, $studid, $desc, $imgsrcarr)
@@ -79,8 +83,7 @@ class hmworksub
             "studentid" => $studid,
             "hmworksubdesc" => $desc,
             "createtime" => date("Y-m-d H:i:s"),
-            "hmworkresstate" => SUBSTATENONE
-            ))) {
+            "hmworkresstate" => SUBSTATENONE))) {
             return false;
         }
 
@@ -141,7 +144,7 @@ class hmworksub
         $sql = "SELECT hsub.hmworkid,hsub.hmworksubid,hsub.studentid, hmk.hmworktitle,hsub.createtime,hc.hwclassname,hu.userdisplay 
         FROM hw_hmwork hmk,hw_hmworksub hsub,hw_class hc,hw_user hu 
         WHERE hmk.hmworkid = hsub.hmworkid AND hmk.teacherid = " . $teacherid .
-            " and hsub.hmworkresstate = ".SUBSTATENONE. " 
+            " and hsub.hmworkresstate = " . SUBSTATENONE . " 
         AND hc.hwclassid = hmk.hwclassid AND hu.userid = hsub.studentid ";
         $db = new DB();
         $query = $db->query($sql);
@@ -156,24 +159,47 @@ class hmworksub
         }
         return $rt;
     }
-    
-    public static function teacsetres($subid,$teaid,$scor,$desc,$content)
+
+    public static function getstudentsubs($stdid)
     {
-        if (null == $subid || !is_numeric($subid)
-            ||null == $teaid || !is_numeric($teaid)
-            ||null == $scor || !is_numeric($scor)
-        ) {
+        if (null == $stdid || !is_numeric($stdid)) {
+            return null;
+        }
+        $sql = "SELECT hsub.hmworkid,hsub.hmworksubid,hsub.studentid,hsub.hmworkresstate,
+        hsub.hmworkresscore, hmk.hmworktitle,hsub.createtime,hc.hwclassname,hu.userdisplay,
+        hut.userdisplay as teachername
+        FROM hw_hmwork hmk,hw_hmworksub hsub,hw_class hc,hw_user hu ,hw_user hut
+        WHERE hmk.hmworkid = hsub.hmworkid AND hsub.studentid = $stdid 
+        AND hc.hwclassid = hmk.hwclassid AND hu.userid = hsub.studentid 
+        and hut.userid = hmk.teacherid";
+        $db = new DB();
+        $query = $db->query($sql);
+
+        if (null == $query)
+            return null;
+        $rt = array();
+        while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
+            $info = new hmworksub();
+            $info->setvalues($row);
+            $rt[] = $info;
+        }
+        return $rt;
+    }
+
+    public static function teacsetres($subid, $teaid, $scor, $desc, $content)
+    {
+        if (null == $subid || !is_numeric($subid) || null == $teaid || !is_numeric($teaid) || null ==
+            $scor || !is_numeric($scor)) {
             return null;
         }
         $db = new DB();
         if (!$db->update("hw_hmworksub", array(
-            "hmworkresstate" => SUBSTATETEASETRES,//已批改标志
+            "hmworkresstate" => SUBSTATETEASETRES, //已批改标志
             "hmworkresscore" => $scor,
             "hmworkresdesc" => $desc,
             "hmworkrescontent" => $content,
             "rescreatetime" => date("Y-m-d H:i:s"),
-            "teacherid" => $teaid
-            )," hmworksubid = $subid")) {
+            "teacherid" => $teaid), " hmworksubid = $subid")) {
             return false;
         }
         return true;

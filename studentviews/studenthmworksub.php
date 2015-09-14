@@ -1,10 +1,15 @@
 <?php
 session_start();
 require_once ("../common.php");
+require_once ("../phplibs/hmworkhelper.php");
 checklogin();
+
+$hmtitle = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['id'])) {
         $_SESSION['studentdubhmid'] = $_GET['id'];
+        $hmwok = hmwork::gethmworkbyidnoc($_GET['id']);
+        $hmtitle = $hmwok->hmworktitle;
     }
 }else{
     echo "<br><font color=\"#FF0000\">请先选择作业</font></br>";
@@ -30,7 +35,7 @@ $(function(){
         var obj = document.getElementById("fileupload");
         var lab = document.getElementById("uplable");
         if(obj.value == ''){
-            alert("请选择文件");
+            alert("请选择图片 ps:左侧那个按钮");
             return;
         }
         $("#myupload").ajaxSubmit({ 
@@ -121,6 +126,7 @@ function subhmwork(){
 
 	
 </script>
+
 </head>
 
 
@@ -135,7 +141,7 @@ function subhmwork(){
     </div>
     
     <div class="mainframeinfo">
-    <div class="formtitle"><span>作业名称:xxxxx</span></div>
+    <div class="formtitle"><span>作业名称:<?php echo $hmtitle; ?></span></div>
     <ul class="forminfo">
         <li>
         <label>留言</label>	
@@ -147,9 +153,13 @@ function subhmwork(){
     <div class="tools"  style="padding:8px 8px 8px 15px;">
 
     	<ul class="toolbar">
-            <li><form id='myupload' action='../viewcontrollors/studentsubimg.php' method='post' enctype='multipart/form-data'>
-    <input type="file" id="fileupload" name="mypic"/><span><label id="uplable"></label></span></form></li>
-        <li class="click" onclick="filechange()"><span><img src="../styles/images/t01.png" /></span>上传图片</li>
+            <li>
+            <form id='myupload' action='../viewcontrollors/studentsubimg.php' method='post' enctype='multipart/form-data'>
+        <input class="filePrew" type="file" id="fileupload" name="mypic"/>
+    <span><label id="uplable"></label></span>
+    </form>
+    </li>
+        <li class="click" onclick="filechange()"><span><img src="../styles/images/stdup.gif" /></span>上传图片</li>
         <li class="click" onclick="subhmwork()"><span><img src="../styles/images/t02.png" /></span>提交作业</li>
         </ul>
     
