@@ -51,7 +51,7 @@ $(function(){
     <span><?php 
     $user = getloginuser();
         echo $user->userdisplay;
-    ?>"</span>
+    ?></span>
     <i>消息</i>
     <b>0</b>
     </div>    
