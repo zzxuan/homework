@@ -38,9 +38,14 @@ class hwuser
 
     public static function userlogin($uname, $upass)
     {
+        $un = trim($uname);
+        $up = trim($upass);
+        if(!get_magic_quotes_gpc()){
+            $un = mysql_real_escape_string($uname);
+        }
         $db = new DB();
         $query = $db->query("select * from " . hwuser::$tabName . " where
-            username = '" . mysql_real_escape_string($uname) . "' and userpassword = '" . md5($upass) .
+            username = '" . $un . "' and userpassword = '" . md5($up) .
             "' limit 1");
         if (null == $query)
             return null;

@@ -302,3 +302,19 @@
             username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
 2015-09-14 23:36:46 释放结果集
 2015-09-14 23:36:46 完成整个查询任务,所用时间为0.0020911693572998
+2015-09-15 00:05:42 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-09-15 00:05:42 释放结果集
+2015-09-15 00:05:42 完成整个查询任务,所用时间为0.0024480819702148
+2015-09-15 00:07:25 查询 select * from hw_user where
+            username = 'zhangsan' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-09-15 00:07:25 释放结果集
+2015-09-15 00:07:25 完成整个查询任务,所用时间为0.0018420219421387
+2015-09-15 00:07:51 查询 select * from hw_user where
+            username = 'xiaoming' and userpassword = '202cb962ac59075b964b07152d234b70' limit 1
+2015-09-15 00:07:51 释放结果集
+2015-09-15 00:07:51 完成整个查询任务,所用时间为0.0016000270843506
+2015-09-16 21:08:23 查询 select * from hw_user where
+            username = 'admin' and userpassword = '53250d93495ec5680ac9a864623a2413' limit 1
+2015-09-16 21:08:24 释放结果集
+2015-09-16 21:08:24 完成整个查询任务,所用时间为0.1077868938446
